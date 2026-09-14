@@ -5,8 +5,14 @@ import WatchlistButton from "@/components/WatchlistButton";
 import RangeSelector from "@/components/RangeSelector";
 import BackButton from "@/components/BackButton";
 
+function getBaseUrl() {
+  if (process.env.NEXT_PUBLIC_BASE_URL) return process.env.NEXT_PUBLIC_BASE_URL;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return "http://localhost:3000";
+}
+
 async function getStockData(symbol: string, range: string) {
-  const base = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const base = getBaseUrl();
   const res = await fetch(`${base}/api/stock/${symbol}?range=${range}`, { cache: "no-store" });
   if (!res.ok) return null;
   return res.json();
