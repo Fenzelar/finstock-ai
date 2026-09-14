@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #0b0f14;
+  color: #e8ecf1;
+}
+.tabular-nums { font-variant-numeric: tabular-nums; }
+::selection { background-color: #f2b84b; color: #0b0f14; }
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-ticker { animation: ticker-scroll 40s linear infinite; }
+
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #131820 25%, #1B222C 37%, #131820 63%);
+  background-size: 800px 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+.hero-glow {
+  background: radial-gradient(60% 50% at 50% 0%, rgba(242, 184, 75, 0.08) 0%, rgba(11, 15, 20, 0) 70%);
+}
